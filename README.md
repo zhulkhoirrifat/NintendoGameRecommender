@@ -102,9 +102,9 @@ Berikut ini adalah konten yang dijadikan referensi untuk menentukan 5 rekomendas
 | ----- | ---- |
 | The Legend of Zelda: Ocarina of Time | ['Action Adventure', 'Fantasy'] |
 
-Berdasarkan tabel diatas pengujian akan dilakukan menggunakan judul game "The Legend of Zelda: Ocarina of Time" dengan genre "Action Adventure, Fantasy".
+Pengujian dilakukan dengan menggunakan judul game "The Legend of Zelda: Ocarina of Time" yang memiliki genre "Action Adventure" dan "Fantasy".
 
-Beikut ini adalah hasil dari model sistem rekomendasi menampilkan 5 game yang memili kesamaan dengan "The Legend of Zelda: Ocarina of Time".
+Berikut ini adalah hasil rekomendasi dari sistem yang menampilkan lima game dengan kesamaan genre yang sama dengan "The Legend of Zelda: Ocarina of Time":
 
 | title | genres |
 | ----- | ---- |
@@ -114,17 +114,26 @@ Beikut ini adalah hasil dari model sistem rekomendasi menampilkan 5 game yang me
 | The Legend of Zelda: The Minish Cap	| ['Action Adventure', 'Fantasy'] |
 | The Legend of Zelda: Link's Awakening DX | ['Action Adventure', 'Fantasy'] |
 
-Sistem telah berhasil merekomendasikan 5 game yang mirip dengan The Legend of Zelda: Ocarina of Time, yaitu game yang memiliki genre yang sama.
+Sistem rekomendasi berhasil mengidentifikasi lima game yang serupa dengan "The Legend of Zelda: Ocarina of Time", yaitu game dengan genre yang sama.
 
 ### Evaluasi Model
-Evaluasi model Content Based Filtering menggunakan Precision. Metrik evaluasi precision adalah metrik yang mengukur seberapa akurat model dalam memprediksi kejadian positif.
+Evaluasi model Content-Based Filtering dilakukan dengan menggunakan metrik Precision. Metrik ini mengukur sejauh mana model dapat memprediksi kejadian yang relevan atau positif.
+
+Berdasarkan rekomendasi yang diberikan di atas, game "The Legend of Zelda: Ocarina of Time" memiliki dua genre. Dari lima game yang direkomendasikan, semuanya memiliki dua genre yang sama, yaitu "Action Adventure" dan "Fantasy". Hal ini menunjukkan bahwa precision dari sistem rekomendasi ini adalah 100%.
+
 Rumus Precision:
 
-Dari hasil rekomendasi di atas, diketahui bahwa game "The Legend of Zelda: Ocarina of Time" memiliki 2 genre. Dari 5 item yang direkomendasikan, 5 item memiliki kategori 2 genre yang sama (similar). Artinya, precision sistem kita sebesar 5/5 atau sebesar 100%.
-
-Precision = #of recommendation that are relevant/#of item we recommend. 
 
 Pada contoh rekomendasi di atas: Precision = 5/5. Jadi presisinya = 100%.
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
 
+### Dampak terhadap Business Understanding
+Implementasi sistem rekomendasi berbasis content-based filtering dengan algoritma Cosine Similarity memberikan dampak positif signifikan bagi platform Nintendo, baik dari segi pengguna maupun bisnis.
+- Apakah model sudah menjawab problem statement?
+Model yang dibangun dengan menggunakan algoritma cosine similarity berhasil menjawab masalah yang dihadapi oleh pengguna dalam menemukan game yang sesuai dengan preferensi mereka. Dengan ribuan game Nintendo yang tersedia, sistem rekomendasi ini dapat menyaring dan menyarankan game yang relevan berdasarkan genre dan preferensi pengguna, sehingga memudahkan pengguna untuk menemukan pilihan yang tepat. Ini membantu mengatasi tantangan besar yang dihadapi pemain terkait pilihan game yang berlimpah dan membuat proses pencarian menjadi lebih efisien.
+- Apakah goals tercapai?
+Goals dari proyek ini tercapai dengan baik. Sistem rekomendasi berhasil memberikan game yang relevan berdasarkan genre, yang langsung mencocokkan preferensi pengguna dengan karakteristik game yang tersedia. Selain itu, solusi berbasis cosine similarity yang diimplementasikan juga memenuhi tujuan untuk menyediakan rekomendasi yang cepat dan akurat, dengan proses yang efisien. Dengan menggunakan metode yang sederhana dan mudah diimplementasikan, hasil rekomendasi tidak hanya cepat tetapi juga sangat relevan dengan input preferensi pengguna.
+- Apakah solusi yang direncanakan berdampak?
+Solusi yang direncanakan memberikan dampak signifikan bagi platform jual beli game Nintendo. Dengan sistem rekomendasi yang efektif, pengguna akan lebih mudah menemukan game yang sesuai dengan preferensi mereka, meningkatkan pengalaman pengguna dan meningkatkan kepuasan pengguna secara keseluruhan. Ini dapat meningkatkan engagement pengguna di platform jual beli game, yang pada gilirannya berpotensi meningkatkan penjualan dan loyalitas pelanggan.
+
+### Kesimpulan
+Sistem rekomendasi berbasis cosine similarity yang dibangun berhasil memenuhi tujuan untuk membantu pengguna menemukan game yang relevan dengan preferensi mereka secara efisien. Dengan memanfaatkan genre dan deskripsi game, model ini memberikan hasil rekomendasi yang akurat dan cepat. Solusi ini tidak hanya efektif dalam mengatasi tantangan pencarian game yang sesuai, tetapi juga memberikan dampak positif pada platform jual beli game dengan meningkatkan pengalaman pengguna dan engagement, sekaligus menggunakan sumber daya yang efisien.
