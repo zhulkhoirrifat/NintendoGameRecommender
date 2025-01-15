@@ -58,11 +58,19 @@ Berdasarkan data tersebut variabel-variabel pada Nintendo Games Dataset adalah s
 
 ### EDA
 
+![pie chart esrb](https://github.com/user-attachments/assets/3cae320c-e3e7-4979-ad2d-e8056a2f103c)
+
 Berdasarkan grafik diatas sebagian besar game di Nintendo memiliki rating E (Everyone) dengan presentase 67.9% dan yang paling terkecil adalah RP (Rating Pending) game yang ratingnya masih belum ditentukan. Jadi game Nintendo sangat cocok dimainkan untuk semua orang.
+
+![bar chart meta score](https://github.com/user-attachments/assets/b6076bee-8461-4a84-af68-98cae45682eb)
 
 Meta score adalah hasil dari review dari kritikus professional yang dipilih langsung oleh Metacritics, The Legend Of Zelda: Ocarina of Time mendapatkan rating yang paling tinggi.
 
+![bar chart user score](https://github.com/user-attachments/assets/338b64ff-8221-4a1f-863b-0b47ea282599)
+
 Berdasarkan grafik diatas, Metal Torrent merupakan game yang memiliki skor tertinggi berdasarkan review dari pengguna metacritics.
+
+![line chart tahun](https://github.com/user-attachments/assets/61fb343d-871d-4518-a160-e495c4600377)
 
 Pada tahun 2009, para pengembang mencatat rekor dengan merilis total 90 game dalam satu tahun, menjadikannya tahun dengan jumlah perilisan game terbanyak. Pencapaian ini didorong oleh popularitas konsol Nintendo DS yang sedang berada di puncak kejayaannya.
 
@@ -123,6 +131,7 @@ Berdasarkan rekomendasi yang diberikan di atas, game "The Legend of Zelda: Ocari
 
 Rumus Precision:
 
+![precision_formula](https://github.com/user-attachments/assets/0943cb5f-fcf1-450c-aa48-e694e4b2ecda)
 
 Pada contoh rekomendasi di atas: Precision = 5/5. Jadi presisinya = 100%.
 
