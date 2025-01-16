@@ -122,6 +122,8 @@ Pengujian dilakukan dengan menggunakan judul game "The Legend of Zelda: Ocarina 
 
 Berikut ini adalah hasil rekomendasi dari sistem yang menampilkan top N dengan kesamaan genre yang sama dengan "The Legend of Zelda: Ocarina of Time":
 
+Tabel Hasil Prediksi:
+
 | title | genres |
 | ----- | ---- |
 | The Legend of Zelda: Twilight Princess | ['Action Adventure', 'Fantasy'] |
@@ -129,6 +131,8 @@ Berikut ini adalah hasil rekomendasi dari sistem yang menampilkan top N dengan k
 | Chibi-Robo!	| ['Action Adventure', 'Fantasy'] |
 | The Legend of Zelda: The Minish Cap	| ['Action Adventure', 'Fantasy'] |
 | The Legend of Zelda: Link's Awakening DX | ['Action Adventure', 'Fantasy'] |
+
+Gambar Hasil Prediksi:
 
 ![Gambar Top N](https://github.com/user-attachments/assets/69db0039-d971-4393-a4a4-0226ab4a4a90)
 
