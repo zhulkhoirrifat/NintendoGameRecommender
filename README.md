@@ -77,33 +77,41 @@ Pada tahun 2009, para pengembang mencatat rekor dengan merilis total 90 game dal
 ## Data Preparation
 
 Data preparation bertujuan untuk mempersiapkan data agar proses pengembangan model diharapkan akurasi model akan menjadi lebih baik dan mengurangi bias pada data. Tahapan preparation data yaitu:
-- **Seleksi Fitur**: Dataset ini memiliki banyak fitur yang dapat digunakan tetapi dalam proyek sistem rekomendasi sederhana ini hanya menggunakan dua kolom yaitu ```title``` dan ```genres```. Fitur yang lainnya mungkin dapat menjadi nilai tambah untuk membuat model yang lebih kompleks.
-- **Menghapus Missing Values**: Menghapus missing values yang ada di kolom ```title``` dan ```genres```. Menghapus missing values setelah seleksi fitur yang relevan untuk memastikan informasi terkait game tetap terjaga.
-- **Menghapus Duplikasi Data**: Terdapat 35 data duplikasi yang perlu dihapus.
+1. Seleksi Fitur
+  - Dataset memiliki berbagai fitur, tetapi untuk proyek ini hanya digunakan dua kolom, yaitu title dan genres. Fitur lainnya dapat dipertimbangkan untuk pengembangan model yang lebih kompleks di masa depan.
+
+2. Menghapus Missing Values
+  - Missing values yang terdapat di kolom title dan genres dihapus untuk menjaga kelengkapan data yang relevan. Tahapan ini dilakukan setelah seleksi fitur untuk memastikan hanya informasi penting yang diproses lebih lanjut.
+
+3. Menghapus Duplikasi Data
+  - Sebanyak 35 data duplikasi dihapus dari dataset untuk memastikan data yang digunakan unik dan tidak bias.
+
+4. Ekstraksi Fitur dengan TF-IDF
+  - Metode TF-IDF (Term Frequency-Inverse Document Frequency) digunakan untuk mengukur pentingnya sebuah kata dalam dokumen tertentu relatif terhadap kumpulan dokumen lainnya.
+  - Proses ini dilakukan dengan fungsi TfidfVectorizer() dari library sklearn. Data difit dan ditransformasikan ke dalam matriks berukuran (1046, 133), di mana 1046 adalah jumlah data dan 133 adalah jumlah genre unik yang terwakili.
 
 ## Modeling
-Cosine Similarity diterapkan dalam sistem rekomendasi berbasis content-based filtering untuk mengukur tingkat kesamaan antara satu game dengan game lainnya, berdasarkan fitur-fitur yang dimiliki oleh masing-masing game.
+Cosine Similarity adalah ukuran kesamaan antara dua vektor dengan menghitung kosinus sudut di antara mereka. Nilai Cosine Similarity berkisar antara -1 hingga 1, tetapi untuk sebagian besar aplikasi sistem rekomendasi, hasilnya berada di rentang 0 hingga 1 karena data biasanya tidak mengandung elemen negatif. Nilai 1 berarti kedua vektor sepenuhnya serupa, sedangkan nilai 0 menunjukkan bahwa vektor tersebut tidak memiliki kesamaan.
 
-Dalam membangun model content-based filtering, langkah awalnya adalah memanfaatkan TF-IDF Vectorizer sebagai metode feature engineering untuk mengidentifikasi fitur penting pada setiap game. Proses ini dilakukan menggunakan fungsi ```TfidfVectorizer()``` dari library sklearn. Setelah itu, data difit dan ditransformasikan ke dalam bentuk matriks. Hasil akhirnya adalah matriks berukuran (1046, 133), di mana angka 1046 merepresentasikan jumlah data, sedangkan angka 133 menunjukkan jumlah genre game yang terwakili dalam matriks tersebut.
+Cara kerja Cosine Similarity dalam content-based filtering dengan merepresentasikan setiap game sebagai vektor numerik berdasarkan fitur-fitur seperti genre, tags, dan developer menggunakan metode seperti TF-IDF atau one-hot encoding. Setelah itu, vektor-vektor tersebut dinormalisasi agar hanya sudut antar-vektor yang diperhitungkan. Tingkat kesamaan antar-game dihitung menggunakan fungsi cosine_similarity dari sklearn untuk menghasilkan matriks kesamaan. Game dengan nilai kesamaan tertinggi terhadap game target kemudian direkomendasikan kepada pengguna.
 
 Untuk menentukan tingkat kesamaan (degree of similarity) antara game, metode Cosine Similarity diterapkan menggunakan fungsi ```cosine_similarity``` dari library sklearn. Konsep ini dihitung berdasarkan persamaan matematika berikut:
 
-Rumus Cosine Similarity
+Rumus Cosine Similarity:
 
-Tahapan selanjutnya melibatkan penggunaan metode argpartition untuk mengidentifikasi sejumlah nilai k tertinggi dalam data similarity. Setelah itu, sistem akan menyusun hasil berdasarkan bobot kesamaan, dimulai dari yang tertinggi hingga terendah. Akhirnya, akurasi sistem rekomendasi diuji untuk memastikan kemampuannya dalam menemukan game yang memiliki kemiripan dengan game yang dicari pengguna.
+![images](https://github.com/user-attachments/assets/e62af498-c8d5-48c0-b023-dca2cd0a6e34)
 
-- Kelebihan Cosine Similarity:
+1. Kelebihan Cosine Similarity:
   - Efisien dan Sederhana: Metode ini mudah diimplementasikan dan dapat menangani data berdimensi tinggi dengan baik.
   - Tidak Bergantung pada Skala: Cosine Similarity hanya mempertimbangkan orientasi vektor, bukan magnitudonya, sehingga cocok untuk data dengan skala yang berbeda.
   - Cocok untuk Data Sparsity: Efektif digunakan pada dataset dengan banyak elemen nol, seperti matriks fitur game atau dokumen.
-- Kekurangan Cosine Similarity:
+2. Kekurangan Cosine Similarity:
   - Tidak Mempertimbangkan Nilai Absolut: Karena hanya mengukur sudut antar vektor, metode ini tidak memperhitungkan intensitas atau nilai absolut dari fitur.
   - Kurang Relevan pada Data Bukan Vektor: Performanya menurun jika digunakan pada data yang tidak dapat direpresentasikan sebagai vektor numerik.
   - Keterbatasan pada Data Non-Linear: Tidak ideal untuk dataset dengan hubungan kompleks yang memerlukan pendekatan non-linear.
+ 
+Tahapan selanjutnya melibatkan penggunaan metode argpartition untuk mengidentifikasi sejumlah nilai top N dalam data similarity. Setelah itu, sistem akan menyusun hasil berdasarkan bobot kesamaan, dimulai dari yang tertinggi hingga terendah. Akhirnya, akurasi sistem rekomendasi diuji untuk memastikan kemampuannya dalam menemukan game yang memiliki kemiripan dengan game yang dicari pengguna.
 
-## Evaluation
-
-### Prediksi
 Berikut ini adalah konten yang dijadikan referensi untuk menentukan 5 rekomendasi game tertinggi yang memiliki kesamaan genre yang sama:
 
 | title | genres |
@@ -112,7 +120,7 @@ Berikut ini adalah konten yang dijadikan referensi untuk menentukan 5 rekomendas
 
 Pengujian dilakukan dengan menggunakan judul game "The Legend of Zelda: Ocarina of Time" yang memiliki genre "Action Adventure" dan "Fantasy".
 
-Berikut ini adalah hasil rekomendasi dari sistem yang menampilkan lima game dengan kesamaan genre yang sama dengan "The Legend of Zelda: Ocarina of Time":
+Berikut ini adalah hasil rekomendasi dari sistem yang menampilkan top N dengan kesamaan genre yang sama dengan "The Legend of Zelda: Ocarina of Time":
 
 | title | genres |
 | ----- | ---- |
@@ -122,9 +130,12 @@ Berikut ini adalah hasil rekomendasi dari sistem yang menampilkan lima game deng
 | The Legend of Zelda: The Minish Cap	| ['Action Adventure', 'Fantasy'] |
 | The Legend of Zelda: Link's Awakening DX | ['Action Adventure', 'Fantasy'] |
 
+![Gambar Top N](https://github.com/user-attachments/assets/69db0039-d971-4393-a4a4-0226ab4a4a90)
+
 Sistem rekomendasi berhasil mengidentifikasi lima game yang serupa dengan "The Legend of Zelda: Ocarina of Time", yaitu game dengan genre yang sama.
 
-### Evaluasi Model
+## Evaluation
+
 Evaluasi model Content-Based Filtering dilakukan dengan menggunakan metrik Precision. Metrik ini mengukur sejauh mana model dapat memprediksi kejadian yang relevan atau positif.
 
 Berdasarkan rekomendasi yang diberikan di atas, game "The Legend of Zelda: Ocarina of Time" memiliki dua genre. Dari lima game yang direkomendasikan, semuanya memiliki dua genre yang sama, yaitu "Action Adventure" dan "Fantasy". Hal ini menunjukkan bahwa precision dari sistem rekomendasi ini adalah 100%.
