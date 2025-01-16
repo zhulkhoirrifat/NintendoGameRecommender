@@ -142,13 +142,13 @@ Sistem rekomendasi berhasil mengidentifikasi lima game yang serupa dengan "The L
 
 Evaluasi model Content-Based Filtering dilakukan dengan menggunakan metrik Precision. Metrik ini mengukur sejauh mana model dapat memprediksi kejadian yang relevan atau positif.
 
-Berdasarkan rekomendasi yang diberikan di atas, game "The Legend of Zelda: Ocarina of Time" memiliki dua genre. Dari lima game yang direkomendasikan, semuanya memiliki dua genre yang sama, yaitu "Action Adventure" dan "Fantasy". Hal ini menunjukkan bahwa precision dari sistem rekomendasi ini adalah 100%.
-
 Rumus Precision:
 
 ![precision_formula](https://github.com/user-attachments/assets/0943cb5f-fcf1-450c-aa48-e694e4b2ecda)
 
-Pada contoh rekomendasi di atas: Precision = 5/5. Jadi presisinya = 100%.
+Pada contoh rekomendasi di atas: Precision = 5/5. Jadi precision = 100%.
+
+Berdasarkan rekomendasi yang diberikan di atas, game "The Legend of Zelda: Ocarina of Time" memiliki dua genre. Dari lima game yang direkomendasikan, semuanya memiliki dua genre yang sama, yaitu "Action Adventure" dan "Fantasy". Hal ini menunjukkan bahwa precision dari sistem rekomendasi ini adalah 100%.
 
 ### Dampak terhadap Business Understanding
 Implementasi sistem rekomendasi berbasis content-based filtering dengan algoritma Cosine Similarity memberikan dampak positif signifikan bagi platform Nintendo, baik dari segi pengguna maupun bisnis.
